@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizonte Salvaje</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #76b852, #8DC26F);
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #34495e;
+    }
+
+    .imgcontainer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background: #34495e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2c3e50;
+    }
+
+    .cancelbtn {
+      background-color: #e74c3c;
+    }
+
+    .cancelbtn:hover {
+      background-color: #c0392b;
+    }
+
+    .psw {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .psw a {
+      color: #76b852;
+      text-decoration: none;
+    }
+
+    .psw a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Horizonte Salvaje</h1>
+
+    <form action="Engine_Validate.php" method="POST">
+      <div class="imgcontainer">
+        <img src="images/user.png" alt="User" class="user" width="200" height="200">
+      </div>
+
+      <label><b>Usuario</b></label>
+      <input type="text" placeholder="Ingresar Usuario" name="username" required>
+
+      <label><b>Contraseña</b></label>
+      <input type="password" placeholder="Ingresar Contraseña" name="password" required>
+
+      <button type="submit" name="submit">Acceder</button>
+
+      <label>
+        <input type="checkbox" checked="checked"> Recordarme
+      </label>
+
+      <button type="button" class="cancelbtn">Cancelar</button>
+
+      <div class="psw">
+        ¿Olvidaste la <a href="#">contraseña?</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
