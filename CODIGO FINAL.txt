@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizonte Salvaje</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #76b852, #8DC26F);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contenedor {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      width: 350px;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contenedor.active {
+      display: flex;
+    }
+
+    h1, h2 {
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background: #34495e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2c3e50;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .opciones p {
+      margin: 5px 0;
+    }
+
+    .resumen {
+      margin-top: 15px;
+      text-align: left;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login -->
+  <div class="contenedor active" id="loginBox">
+    <h1>Horizonte Salvaje</h1>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="clave" placeholder="Contraseña">
+    <button onclick="validar()">Acceder</button>
+    <div class="error" id="mensajeError"></div>
+  </div>
+
+  <!-- Bienvenida -->
+  <div class="contenedor" id="bienvenidaBox">
+    <h1>Horizonte Salvaje</h1>
+    <h2>Bienvenido</h2>
+    <div class="opciones">
+      <p>1-. Mapa del zoológico</p>
+      <p>2-. <button onclick="mostrarFormulario()">Compra tus boletos</button></p>
+    </div>
+  </div>
+
+  <!-- Formulario de compra -->
+  <div class="contenedor" id="formularioBox">
+    <h2>Rellena los espacios</h2>
+    <input type="number" id="boletos" placeholder="Número de boletos">
+    <input type="text" id="tarjeta" placeholder="Número de tarjeta">
+    <input type="text" id="titular" placeholder="Titular">
+    <input type="month" id="vencimiento" placeholder="Fecha de vencimiento">
+    <input type="number" id="cvv" placeholder="Código de seguridad">
+    <button onclick="comprar()">Comprar</button>
+    <div class="resumen" id="resumenBox"></div>
+  </div>
+
+  <script>
+    function validar() {
+      const usuario = document.getElementById("usuario").value;
+      const clave = document.getElementById("clave").value;
+      const error = document.getElementById("mensajeError");
+
+      if (usuario === "Samuel117" && clave === "12345") {
+        document.getElementById("loginBox").classList.remove("active");
+        document.getElementById("bienvenidaBox").classList.add("active");
+      } else {
+        error.textContent = "Usuario o contraseña incorrectos.";
+      }
+    }
+
+    function mostrarFormulario() {
+      document.getElementById("bienvenidaBox").classList.remove("active");
+      document.getElementById("formularioBox").classList.add("active");
+    }
+
+    function comprar() {
+      const boletos = document.getElementById("boletos").value;
+      const tarjeta = document.getElementById("tarjeta").value;
+      const titular = document.getElementById("titular").value;
+      const vencimiento = document.getElementById("vencimiento").value;
+      const cvv = document.getElementById("cvv").value;
+
+      if (boletos && tarjeta && titular && vencimiento && cvv) {
+        const resumen = `
+          <p>✅ Tus boletos han sido comprados.</p>
+          <p>Número de boletos: ${boletos}</p>
+          <p>Tarjeta: **** **** **** ${tarjeta.slice(-4)}</p>
+        `;
+        document.getElementById("resumenBox").innerHTML = resumen;
+      } else {
+        alert("Por favor completa todos los campos.");
+      }
+    }
+  </script>
+
+</body>
+</html>
